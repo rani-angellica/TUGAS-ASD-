@@ -1,0 +1,38 @@
+Binary Search adalah Pencarian biner adalah algoritma yang efisien untuk menemukan item dari daftar item yang diurutkan. Ini bekerja dengan berulang kali membagi setengah bagian dari daftar yang dapat berisi item, sampai Anda mempersempit kemungkinan lokasi menjadi hanya satu. Kami menggunakan pencarian biner dalam permainan menebak dalam tutorial pengantar.
+#include <stdio.h>
+
+int main()
+{
+  int c, awal, akhir, tengah, n, cari, array[100];
+
+  printf("Masukan Jumlah integer : ");
+  scanf("%d", &n);
+
+  printf("Masuka %d Integer : \n", n);
+
+  for (c = 0; c < n; c++)
+    scanf("%d", &array[c]);
+
+  printf("Masukan angka yang akan dicari: ");
+  scanf("%d", &cari);
+
+  awal = 0;
+  akhir = n-1;
+  tengah = (awal+akhir)/2;
+
+  while (awal <= akhir) {
+    if (array[tengah] < cari)
+      awal = tengah + 1;
+    else if (array[tengah] == cari) {
+      printf("\n%d ada pada barisan ke %d.\n", cari, tengah+1);
+      break;
+    }
+    else
+      akhir= tengah-1;
+
+    tengah =(awal+akhir)/2;
+  }
+    if (awal>akhir)
+    printf("Tidak dapat menemukan, %d tidak ada dalam data\n", cari);
+  return 0;
+}
